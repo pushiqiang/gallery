@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<h2>欢迎参观小鱼相册</h2>
+<p>在这里你能看到小鱼所有的相册，点击相册底部你能看到每个相册的所以照片。</p>
+<h3>相册列表</h3>
+<table>
+	<tr>
+	{% for item in item_list|slice:":5" %}
+		<td>	
+			<a href="{{ item.get_absolute_url }}"><b>{{ item.name }}</b></a><br />
+			{% if item.photo_set.count %}
+				<img src="{{ item.photo_set.all.0.image.thumb_url }}" />
+			{% else %}
+				<span>还没有照片</span>
+			{% endif %}		
+		</td>
+	{% endfor %}
+	</tr>
+</table>
+<p><a href="{% url 'items_list' %}">查看全部相册</a></p>
+{% endblock %}

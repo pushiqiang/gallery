@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}{{ photo.item.name }} - {{ photo.title }}{% endblock %}
+
+{% block content %}
+
+	<a href="{{ photo.item.get_absolute_url }}">
+		<<回到{{photo.item.name}}详细页面	
+	</a>
+	<h2>{{ photo.item.name }} - {{ photo.title }}</h2>
+	<img src="{{ photo.image.url }}" />
+			</a>
+	{% if photo.caption %}
+		<p>{{ photo.caption }}</p>
+	{% endif %}
+
+{% endblock %}
